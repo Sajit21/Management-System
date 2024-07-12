@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: Quicksand;
+        }
+        body{
+            margin: 0;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            background-image: url(epaybg.png);
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+            width: 1000px;
+        }
+
+        .div_img{
+            height: 200px;
+        }
+
+        .img{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .div_text{
+            display: flex;
+            background-color: rgb(34, 34, 34);
+            color: white;
+            height: 600px;
+        }
+        .div1{
+            width: 90px;
+            padding: 8px;
+        }
+        .div2{
+            margin-left: 8px;
+        }
+        .logo{
+            width: 80%;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 70px;
+            border: 1px solid black;
+            background-color: white;
+        }
+        .div2_1{
+            font-size: 30px;
+            font-weight: 900;
+            margin: 20px 0px 20px 0px;
+            text-decoration: underline;
+        }
+        .div2_2{
+            font-size: 20px;
+            font-style: italic;
+            margin: 20px 0px 20px 0px;
+        }
+        .div2_3{
+            display: flex;
+            flex-direction: row;
+        }
+        .div2_3_1{
+            width: 300px;
+        }
+        .div2_3_2{
+            flex:1
+        }
+        .buttons{
+            padding: 5px 10px 5px 10px;
+            border: 2px solid orangered;
+            border-radius: 20px;
+            color: orangered;
+            font-size: 28px;
+            font-weight: 900;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="div_img">
+            <img src="EPAY.png" class="img">
+        </div>
+        <div class="div_text">
+            <div class="div1">
+                <img src="logo.png" class="logo">
+            </div>
+
+            <div class="div2">
+                <div class="div2_1">
+                    Sagarmatha College of Science and Technology
+                </div>
+
+                <div class="div2_2">
+                    Your Information:
+                </div>
+
+                <div class="div2_3">
+                    <div class="div2_3_1">
+                        Name: <br> <br>
+                        Id  : <br> <br>
+                        Total:
+
+                    </div>
+                    <div class="div2_3_2">
+                        student name <br> <br>
+                        student id <br> <br>
+                        10,00,000
+
+                    </div>
+                </div>
+
+                <div class="div2_4">
+                    <button class="buttons">Back</button>
+                    <button class="buttons">Pay</button>
+                    
+                </div>
+                
+                
+            </div>
+            
+            
+        </div>
+
+    </div>
+
+
+    
+</body>
+</html>
