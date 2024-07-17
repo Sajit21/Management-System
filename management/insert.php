@@ -107,7 +107,20 @@
 
         }
         .register_bottom{
-            flex: 5;
+/*            // flex: 5;
+             */
+            display: flex;
+            align-item:center;
+            justify-content:center;
+            margin-top: 8px;
+            margin-bottom: 60px;
+            
+            
+        }
+            .register_bottom form{
+/*          //    flex: 5;
+                 */
+                flex-direction:column;
             display: flex;
             margin-top: 8px;
             margin-bottom: 60px;
@@ -262,7 +275,10 @@
 
             <input type="submit" class="enter">
         </div>  
-        <hr>
+
+<!--         added some chaneges to the code for the sign up pattern in the admin webpage
+         -->
+<!--         <hr>
 
         <div class="div_table">
 
@@ -291,6 +307,6 @@
 
 
     
-    </div>
+    </div> -->
 </body>
 </html>
