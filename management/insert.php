@@ -252,7 +252,8 @@
         </li>
     </ul>
 
-    
+<!-- have to create adiv and break down into two some for chages 
+     -->
     <div class="div_register">
         <div class="register_top">
             Insert Student Information :
