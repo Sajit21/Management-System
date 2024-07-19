@@ -1,3 +1,4 @@
+//conncting to database but still some errors if we don't create database in phpmyadmin
 <?php
 $server="localhost";
 $username="root";
