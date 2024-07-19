@@ -1,5 +1,64 @@
+// some chnages have been done 
 <?php
-    require_once("entrycheck_admin.php");
+// session_start();
+require_once("entrycheck_admin.php");
+require('dbcopy.php');
+
+$db_check_query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$dbname'";
+$db_check_result = $conn->query($db_check_query);
+
+if ($db_check_result->num_rows > 0) {
+    echo "Database already exists<br>";
+} else {
+    $sql = "CREATE DATABASE $dbname";
+    if ($conn->query($sql) === TRUE) {
+        echo "Database created successfully<br>";
+    } else {
+        echo "Error while creating database: " . $conn->error . "<br>";
+    }
+}
+
+// $conn->select_db($dbname);
+
+$sql = "CREATE TABLE IF NOT EXISTS `detail` (
+    `SN` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(50) NOT NULL,
+    `rollno` INT NOT NULL,
+    `phNO` BIGINT NOT NULL,
+    `dob` DATE NOT NULL,
+    `address` VARCHAR(50) NOT NULL,
+    PRIMARY KEY (`SN`)
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table created successfully or already exists<br>";
+} else {
+    echo "Error creating table: " . $conn->error . "<br>";
+}
+
+if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+    $uname = $_POST['name'];
+    $roll = $_POST['roll'];
+    $phone = $_POST['phno'];
+    $date = $_POST['date'];
+    $address = $_POST['address'];
+
+    $sql2 = "INSERT INTO detail (name, rollno, phNO, dob, address) VALUES ('$uname', $roll, $phone, '$date', '$address')";
+    if($conn->query($sql2)==True)
+    {
+        echo "data inserted successfully";
+    }
+    else{
+        echo "some issue while inserting";
+    }
+
+   
+
+}
+
+?>
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,27 +166,30 @@
 
         }
         .register_bottom{
-/*            // flex: 5;
-             */
-            display: flex;
-            align-item:center;
-            justify-content:center;
+            /* flex: 5;
+              flex-direction:column;             */
+              /* flex-direction:column; */
+              display:flex;
+              align-item:center;
+              justify-content:center;
             margin-top: 8px;
             margin-bottom: 60px;
             
             
         }
-            .register_bottom form{
-/*          //    flex: 5;
-                 */
-                flex-direction:column;
-            display: flex;
+        .register_bottom form{
+              /* margin-top:2vh;  */
+              flex-direction:column;
+              display:flex;
             margin-top: 8px;
             margin-bottom: 60px;
             
             
         }
+   
+        .ent
         .enter {
+            /* margin-top:5vh; */
             padding: 10px 40px 10px 40px;
             background-color:rgb(1,98,53);
             border: none;
@@ -252,62 +314,76 @@
         </li>
     </ul>
 
-<!-- have to create adiv and break down into two some for chages 
-     -->
+   
     <div class="div_register">
         <div class="register_top">
             Insert Student Information :
         </div>
 
-        <div class="register_bottom">
-            
-            <form action="">
+        <!-- <div class="register_bottom">
+        name, rollno, phNO, dob, address       
+            <form action="insert.php" method="POST">
                 <label for="">Name :</label>
-                <input type="text" name="" class="insert">
+                <input type="text" name="name" class="insert">
                 <label for="">Roll Number :</label>
-                <input type="text" name="" class="insert">
+                <input type="text" name="roll" class="insert">
                 <label for="">Phone Number :</label>
-                <input type="text" name="" class="insert">
+                <input type="text" name="phno" class="insert">
                 <label for="">DOB :</label>
-                <input type="date" name="" class="insert">
+                <input type="date" name="date" class="insert">
                 <label for="">Address :</label>
-                <input type="text" name="" class="insert">
+                <input type="text" name="address" class="insert">
+                <input type="submit" class="enter">
             </form>
 
-            <input type="submit" class="enter">
-        </div>  
+          
+        </div>   -->
+        <div class="register_bottom">
+            <form action="insert.php" method="POST">
+                <label for="name">Name :</label>
+                <input type="text" name="name" class="insert">
+                <label for="roll">Roll Number :</label>
+                <input type="text" name="roll" class="insert">
+                <label for="phno">Phone Number :</label>
+                <input type="text" name="phno" class="insert">
+                <label for="date">DOB :</label>
+                <input type="date" name="date" class="insert">
+                <label for="address">Address :</label>
+                <input type="text" name="address" class="insert">
+                <input type="submit" class="enter">
+            </form>
+        </div>
+        <hr> 
 
-<!--         added some chaneges to the code for the sign up pattern in the admin webpage
-         -->
-<!--         <hr>
-
-        <div class="div_table">
+        <!-- <div class="div_table">
 
             <h1>Students Details</h1>
+            <form action="insert.php" method="POST">
+                <fieldset id="field">
+                    <label for="name">Name:</label>
+                    <input type="text" name="uname" value="uname">
+                    <label for="roll">ROllno:</label>
+                    <input type="password" name="roll" value="roll">
+                    <label for="name">Name:</label>
+                    <input type="text" name="uname" value="uname">
 
-            <table class="large" border="1px" cellpadding="1px" cellspacing="1px" width="100%">
-        
-        <tr>
-            <th>Name</th>
-            <th>Rollno</th>
-            <th>Batch</th>
-            <th>Fee</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        <tr class="large1">
-            <td>Name</td>
-            <td>Rollno</td>
-            <td>Batch</td>
-            <td>Fee</td>
-            <td>Edit</td>
-            <td>Delete</td>
-        </tr>
-        </table>
-        </div>
+                    
+                    
+
+
+
+
+                </fieldset>
+
+            </form>
+
+
+                
+       
+        </div> -->
 
 
     
-    </div> -->
+    </div>
 </body>
 </html>
