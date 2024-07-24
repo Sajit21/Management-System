@@ -1,3 +1,5 @@
+// main access of the admin frontend
+
 <?php
     require_once("entrycheck_admin.php");
 ?>
