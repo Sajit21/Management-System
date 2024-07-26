@@ -1,4 +1,4 @@
-// some chnages have been done 
+//we insert the data and link the page with the admin.php so futher select,edit and delete is available
 <?php
 // session_start();
 require_once("entrycheck_admin.php");
