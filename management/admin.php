@@ -1,5 +1,4 @@
 // we have edit ,delete option and edit option is available when we click on edit button
-//include access to the admin page
 <?php
 require_once("entrycheck_admin.php");
 require('dbcopy.php');
